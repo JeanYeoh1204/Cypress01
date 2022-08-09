@@ -45,12 +45,12 @@ describe('homepage spec', () => {
 
 describe('login spec', () => {
   
-  it('Visit login page', () => {
-    cy.get('.header__SignIn-sc-19law7x-0 > a').click();
+  it('Check "sign in button" and Visit login page', () => {
+    cy.get('.header__SignIn-sc-19law7x-0 > a').should('be.visible').click();
+    cy.url().should("include","/login");
   })
 
-  it('Check navigation bar "sign in button" login and logout scenario', () => {
-    cy.get('.header__SignIn-sc-19law7x-0 > a').should('be.visible');
+  it('Verify login and logout scenario', () => {
     cy.get('.ant-radio-button-wrapper-checked > :nth-child(2)')
     cy.get('#login_email').type('student@admin.com')
     cy.get('#login_password').type('111111')
